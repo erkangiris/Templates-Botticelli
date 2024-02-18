@@ -1,0 +1,63 @@
+/** @format */
+
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+.btn-venus {
+  @apply px-10 py-3 flex items-center justify-center text-white font-semibold text-base rounded-lg h-12 bg-venus-brown w-fit sm:px-5 sm:text-sm;
+}
+.btn-line {
+  @apply px-10 py-3 flex items-center justify-center text-white font-semibold text-base rounded-lg h-12 bg-white bg-opacity-10 w-fit hover:bg-opacity-15 sm:px-5 sm:text-sm;
+}
+
+.input {
+  @apply block w-96 sm:w-full rounded-md border-0 h-12 pl-5 text-base text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6;
+}
+
+.seance {
+  @apply w-32 border border-blue-500 text-blue-500 font-semibold text-base rounded h-10 flex items-center justify-center hover:bg-blue-500 hover:text-white sm:text-sm sm:h-8 sm:w-20;
+}
+.dangertext p{
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.moviedetail h4, h5, h6{
+  font-size: 32px;
+  font-weight: bold;
+}
+.moviedetail h1, h2, h3{
+  font-size: 48px;
+  font-weight: bold;
+}
+
+
+.swiper-pagination-bullet {
+  background-color: #fff !important;
+  width: 12px !important;
+  height: 12px !important;
+}
+html {
+  scroll-behavior: smooth;
+}
+
+
+
+
+
+
+
+@media (min-width: 240px) and (max-width: 1022px) {
+
+  .moviedetail h4, h5, h6 {
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 600;
+  }
+
+}
+
+
+
+
