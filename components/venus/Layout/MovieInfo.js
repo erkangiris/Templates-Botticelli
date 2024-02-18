@@ -15,7 +15,7 @@ export default async function MovieInfo({data}) {
             <div className='w-1270 mx-auto flex flex-col justify-center pt-24 sm:pt-20 relative z-10'>
                 <div className='flex w-full items-start gap-3'>
                     <figure className='hidden sm:block'>
-                        <Image src="/img/delete/dm.webp" alt="Movie Cover" width={90} height={120} className='rounded' />
+                    <Image src={data.imageUrlValue} alt={data.filmName} width={90} height={120} className='rounded' />
                     </figure>
                     <div className='w-full flex flex-col'>
                         <h1 className='font-bold  text-5xl mb-3 sm:text-2xl'>{data.filmName}</h1>

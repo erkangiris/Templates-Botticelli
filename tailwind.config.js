@@ -65,6 +65,9 @@ module.exports = {
       zIndex:{
         "1000":"1000",
         "1001":"1001"
+      },
+      textColor:{
+        "botticelli-blue":"#204055",
       }
     },
   },

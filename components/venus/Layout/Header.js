@@ -29,7 +29,7 @@ export default async function Header() {
         <>
 
             <header className='h-24 w-full px-10 sm:h-20 sm:px-5 flex items-center justify-between bg-botticelli-blue absolute left-0 top-0 z-50 sm:hidden'>
-                <Link href="/" title="Homepage" className='sm:hidden'><Image src="/img/logo1.svg" width={169} height={55} alt="Logo" /></Link>
+                <Link href="/" title="Homepage" className='sm:hidden'><Image src="/img/logo1.svg" width={125} height={68} alt="Logo" /></Link>
                 <nav className='flex gap-4 items-center sm:hidden'>
                     {
                         menu.map((item) => {
