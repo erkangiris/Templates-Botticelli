@@ -25,8 +25,8 @@ const WebServices = {
               'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-              "username": "cinemapinkapi@biletinial.com",
-              "password": "4574747"
+              "username": "kinomediteranapi@biletinial.com",
+              "password": "kinomediteran1!"
             })
           });
           if (tokenResponse.status === 200) {

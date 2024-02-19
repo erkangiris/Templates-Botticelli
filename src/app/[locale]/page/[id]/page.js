@@ -5,20 +5,24 @@ import Title from '@/components/venus/Layout/Title'
 import Image from 'next/image'
 import React from 'react'
 import { WebServices } from "@/services/request";
-import { getTranslations} from 'next-intl/server';
+import { getTranslations } from 'next-intl/server';
+const regex = /(<([^>]+)>|&nbsp;)/gi;
+export async function generateMetadata({ params }) {
+    const metadata = await WebServices.getGetBySeoUrl({ seoUrl: params.id })
 
-export async function generateMetadata() {
-    const t = await getTranslations();
     return {
-        title:t('about-us'),
-        description:t('about-us_subtext')
+        title: metadata.data.contentTitle,
+        description: metadata.data.contents.replace(regex, "").slice(0,159)
     }
 }
 
-
-export default async function page() {
+export default async function page({ params }) {
     const t = await getTranslations()
-    const contents = await WebServices.getContentbyId({id:'4'})
+    const contents = await WebServices.getGetBySeoUrl({ seoUrl: params.id })
+
+
+    console.log(contents)
+
     const logos = [
         { name: 'Globus Bank', img: '/img/delete/l1.svg' },
         { name: 'Parallex Bank', img: '/img/delete/l2.svg' },
@@ -27,21 +31,20 @@ export default async function page() {
         { name: 'Stanbic IBTC ', img: '/img/delete/l5.svg' },
         { name: 'Sterling Bank', img: '/img/delete/l6.svg' },
     ]
-    
+
 
 
     return (
         <>
             <Header />
-            {/* <Breadcrumb title={t('about-us')} subtitle={t('about-us_subtext')} img={contents.data.imageUrl} /> */}
-            <Breadcrumb title={t('about-us')} subtitle={t('about-us_subtext')} img={'/img/delete/br1.webp'} />
+            <Breadcrumb title={contents.data.contentTitle} subtitle={contents.data.contents} img={'/img/delete/br1.webp'} />
             <div className='w-1270 mx-auto flex flex-col gap-32 text-lg leading-snug sm:w-full sm:gap-12 sm:p-5 sm:text-sm moviedetail'>
                 <div className='w-full flex flex-col gap-5'>
-                    <Title title={t('about-us')} subtitle={t('about-us_subtext')} />
+                    <Title title={contents.data.contentTitle} subtitle={contents.data.contents} />
                     <div className='w-full flex flex-col' dangerouslySetInnerHTML={{ __html: `<p>${contents.data.contents}</p>` }}></div>
                 </div>
 
-                <div className='w-full flex flex-col mt-32 sm:mt-0'>
+                {/* <div className='w-full flex flex-col mt-32 sm:mt-0'>
                     <Title title={t('partners')} subtitle={t('partners_subtext')} />
                     <div className='w-full grid grid-cols-4 gap-3 sm:flex sm:overflow-x-auto'>
                         {
@@ -53,7 +56,7 @@ export default async function page() {
                             ))
                         }
                     </div>
-                </div>
+                </div> */}
             </div>
             <Footer />
         </>

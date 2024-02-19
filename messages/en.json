@@ -71,6 +71,12 @@
   "see_seances":"See Seances",
   "min":"Min",
   "hour":"Hour",
-  "movie":"Movie"
+  "movie":"Movie",
+  "cinemas":"Cinemas",
+  "loyalty_club":"Loyalty Club",
+  "film_dis":"Film Distribution",
+  "kino_group":"Kino Mediteran is a proud member of",
+  "about_us_url":"about-us",
+  "film-distribution_url":"film-distribution"
   
 }

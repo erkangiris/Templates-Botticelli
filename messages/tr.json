@@ -71,7 +71,13 @@
   "see_seances":"Seanslar Gör",
   "min":"Dk",
   "hour":"Saat",
-  "movie":"Filmi"
+  "movie":"Filmi",
+  "cinemas":"Sinemalar",
+  "loyalty_club":"Sadakat Kulübü",
+  "film_dis":"Film Dağıtım",
+  "kino_group":"Kino Mediteran'ın gururlu bir üyesidir",
+  "about_us_url":"hakkimizda",
+  "film-distribution_url":"film-dagitim"
 
 
 }

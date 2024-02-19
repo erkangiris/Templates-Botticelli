@@ -47,7 +47,7 @@ export default function Newsletter({text }) {
           {formik.touched.email && formik.errors.email ? (
             <div className='absolute text-xxs text-red-300 left-0 -bottom-6'>{formik.errors.email}</div>
           ) : null}
-          <button className='btn-venus' type="submit">{text.newsletter_btn}</button>
+          <button className='btn-line' type="submit">{text.newsletter_btn}</button>
         </div>
         <Toaster position="bottom-center" reverseOrder={false} />
       </form>

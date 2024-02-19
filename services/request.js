@@ -75,6 +75,7 @@ const WebServices = {
   getNewsById: (params) => WebServices.get(`News/GetNewsById`, params),
   getAllCampaigns: (params) => WebServices.get('Campaign/Get', params),
   getSettings: (params) => WebServices.get('Settings/Get', params),
+  getGetBySeoUrl: (params) => WebServices.get(`Content/GetBySeoUrl`, params),
 
 
 

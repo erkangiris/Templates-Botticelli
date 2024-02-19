@@ -22,9 +22,9 @@ export default async function page() {
     return (
         <>
             <Header />
-            <Breadcrumb title={t('branches')} subtitle={t('branches_subtext')}  img={'/img/delete/br1.webp'}  />
+            <Breadcrumb title={t('cinemas')} subtitle={t('branches_subtext')}  img={'/img/delete/br1.webp'}  />
             <div className='w-1270 mx-auto sm:w-full'>
-                <BranchList locale={locale} data={branchData.data} title={t('branches')} subtitle={t('branches_subtext')} />
+                <BranchList locale={locale} data={branchData.data} title={t('cinemas')} subtitle={t('branches_subtext')} />
             </div>
             <Footer />
         </>

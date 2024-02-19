@@ -12,7 +12,7 @@ export default async function Branch({ data }) {
     return (
         <Link href={`branches/${data.biletinialBranchId}`} className='rounded-lg bg-white p-3'>
             <figure className='relative'>
-                <Image src={data.imageUrl} alt={data.name} width={415} height={285} className='rounded-lg' />
+                <Image src={data.imageUrl} alt={data.name} width={391} height={142} className='rounded-lg' />
                 <div className='flex gap-2 absolute left-3 bottom-3 datas-center mt-3 px-2 py-1 bg-white w-fit rounded'>
                     <Image src="/img/star.svg" alt="Rating" width={16} height={17} />
                     <span className='text-sm font-semibold'>4.7</span>
