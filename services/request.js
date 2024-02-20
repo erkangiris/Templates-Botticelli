@@ -2,40 +2,55 @@
 
 import axios from "axios";
 import jwt from "jsonwebtoken";
+import { cache } from "react";
 
 const API_URL = "https://contentapi-dev.biletinial.com/api/";
 
 // cinemapinkapi@biletinial.com
 // 4574747
 
-const token = process.env.API_TOKEN
-const secretKey = "SecretKeyCmsApi."
-
-
+let token = process.env.API_TOKEN
+const apiurl = process.env.API_URL
+const authparams = {
+  username: process.env.API_USERNAME,
+  password: process.env.API_PASSWORD
+}
 
 
 const WebServices = {
-  get: async (endpoint, params) => {
 
+  get: cache(async (endpoint, params) => {
 
-
-
-
-    // check token geçerli ise devam et değilse login ol yei token  env.API_TOKENa setle
-
-    const response = await axios
-      .get(`${API_URL + endpoint}`, {
+    // console.log("GET", token)
+    try {
+      const response = await axios.get(`${API_URL + endpoint}`, {
         headers: {
-          // authorization: `Bearer ${sessionStorage.getItem('accessprocess.env.API_TOKEN')}`,
-          authorization: `Bearer ${process.env.API_TOKEN}`,
+          authorization: `Bearer ${token}`,
           XApiKey: `TPJDtRG0cP`
         },
         params,
-      })
-      .then((response) => response.data);
+      });
 
-    return response;
-  },
+      return response.data;
+    } catch (error) {
+
+      if (error.response.status === 401) {
+        const newToken = await WebServices.getToken()
+        if (newToken.data.status_code === 200) {
+          process.env.API_TOKEN = newToken.data.token.access_token
+          token = newToken.data.token.access_token
+          // console.log("TOKEN", token)
+          const data = await WebServices.get(endpoint, params)
+          return data
+        }
+      } else {
+        return { status_code: 500 }
+      }
+    }
+  }),
+
+
+
   post: async (endpoint, params) => {
     try {
       const response = await axios.post(
@@ -55,10 +70,18 @@ const WebServices = {
     }
   },
 
+
   getToken: async () => {
 
-  },
+    const auth = await axios.post(`${API_URL + 'Auth/Token'}`, authparams,
+      {
+        headers: {
+          XApiKey: `TPJDtRG0cP`
+        }
+      })
 
+    return auth;
+  },
 
   getAllSlider: (params) => WebServices.get(`Cinema/GetSliders`, params),
   getAllVision: (params) => WebServices.get(`Cinema/Visions?CinemaId=${process.env.CINEMA_ID}`, params),

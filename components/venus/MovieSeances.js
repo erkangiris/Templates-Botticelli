@@ -19,7 +19,7 @@ export default function MovieSeances({ title, subtitle, data, movie, seancess })
     return (
         <section className='w-full flex flex-col mt-32 sm:mt-20'>
             <Title title={title} subtitle={subtitle} />
-            <div className='w-full flex shadow-card rounded-lg mt-5 mb-10 border border-gray-200 px-10 relative sm:mb-5 sm:mt-0'>
+            <div className='w-full flex rounded-lg mt-5 mb-10 bg-white px-10 relative sm:mb-5 sm:mt-0'>
                 <Swiper
                     spaceBetween={0}
                     slidesPerView={'auto'}
@@ -47,7 +47,7 @@ export default function MovieSeances({ title, subtitle, data, movie, seancess })
             <div className='w-full flex flex-col gap-10 sm:gap-5'>
                 {
                     currentDaySeances[0].seances.map((item, index) => (
-                        <div key={index} className='w-full p-10 rounded-xl border-gray-200 border shadow-card sm:p-5'>
+                        <div key={index} className='w-full p-10 rounded-xl  bg-white sm:p-5'>
                             <div className='w-full flex flex-col'>
                                 <h3 className='font-bold text-3xl sm:text-lg sm:leading-tight sm:mb-1'>{item.branchName}</h3>
                                 <span className='text-xs opacity-60 mb-10 sm:mb-6'>{`${movie.filmName} ${item.branchName} ${seancess}`}</span>

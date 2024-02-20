@@ -25,7 +25,7 @@ export default async function Poster({ data, autowidth, category, type }) {
                 }
 
             </figure>
-            <div className='flex flex-col p-5 sm:p-2'>
+            <div className='flex flex-col px-5 pt-5 pb-2 sm:p-2'>
                 <strong className='text-xl line-clamp-1 sm:text-base'>{data.name}</strong>
                 {data.filmTypes && <span className='text-xs opacity-60 sm:text-xs'>{data.filmTypes.map(film => film.filmtype).join(', ')}</span>}
             </div>
@@ -43,7 +43,7 @@ export default async function Poster({ data, autowidth, category, type }) {
                 }
 
             </figure>
-            <div className='flex flex-col p-5 sm:p-2'>
+            <div className='flex flex-col px-5 pt-5 pb-2 sm:p-2'>
                 <strong className='text-xl line-clamp-1 sm:text-base'>{data.name}</strong>
                 {data.filmTypes && <span className='text-xs opacity-60 sm:text-xs'>{data.filmTypes.map(film => film.filmtype).join(', ')}</span>}
             </div>

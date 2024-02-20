@@ -21,7 +21,7 @@ export default async function page({ params }) {
     const contents = await WebServices.getGetBySeoUrl({ seoUrl: params.id })
 
 
-    console.log(contents)
+    // console.log(contents)
 
     const logos = [
         { name: 'Globus Bank', img: '/img/delete/l1.svg' },

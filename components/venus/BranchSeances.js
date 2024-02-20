@@ -462,7 +462,7 @@ export default function BranchSeances({ title, subtitle,  branch, seancess }) {
         setCurrentDay(param)
         setbindex(index)
     };
-    console.log(currrentDay[0].seances[0], 'currrentDay')
+    // console.log(currrentDay[0].seances[0], 'currrentDay')
     // console.log(data[0].seances,'sena')
 
 

@@ -18,7 +18,7 @@ export default async function Home() {
 
     const t = await getTranslations();
     const locale = await getLocale();
-    const sliderData = await WebServices.getAllSlider({ id: "1" });
+    const sliderData = await WebServices.getAllSlider();
     const moviesonVision = await WebServices.getAllVision();
     const higlights = await WebServices.getAllHighligts();
     const nextprogrgam = await WebServices.getAllNextProgram();
@@ -42,3 +42,4 @@ export default async function Home() {
         </>
     );
 }
+export const revalidate = 100

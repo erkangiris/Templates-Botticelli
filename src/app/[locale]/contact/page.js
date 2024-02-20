@@ -22,7 +22,7 @@ export default async function page() {
   const t = await getTranslations();
   const branchData = await WebServices.getAllBranches();
   const contactinfo = await WebServices.getSettings();
-
+  // console.log(contactinfo)
 
   return (
     <>
@@ -36,7 +36,7 @@ export default async function page() {
             <span className='text-sm sm:text-xs'>{t('ticket_cancellation_subtext')}</span>
             <div className='flex items-center gap-2 mt-8 sm:mt-4'>
               <PhoneArrowUpRightIcon className='w-5 h-5 text-blue-600' />
-              <Link className='font-semibold text-blue-600' href={'tel:8503339911'} title={t('ticket_cancellation')}>850 333 9911</Link>
+              <Link className='font-semibold text-blue-600' href={'tel:8503339911'} title={t('ticket_cancellation')}>{contactinfo.data[1].phone}</Link>
             </div>
           </div>
           <div className='rounded-lg bg-white p-10 flex flex-col sm:p-5'>
@@ -44,7 +44,7 @@ export default async function page() {
             <span className='text-sm sm:text-xs'>{t('head_office_subtext')}</span>
             <div className='flex items-center gap-2 mt-8 sm:mt-4'>
               <PhoneArrowUpRightIcon className='w-5 h-5 text-blue-600' />
-              <Link className='font-semibold text-blue-600' href={'tel:8503339911'} title={t('head_office')}>{contactinfo.data[0].phone}</Link>
+              <Link className='font-semibold text-blue-600' href={'tel:8503339911'} title={t('head_office')}>{contactinfo.data[1].phone}</Link>
             </div>
           </div>
           <div className='rounded-lg bg-white p-10 flex flex-col sm:p-5'>
@@ -52,7 +52,7 @@ export default async function page() {
             <span className='text-sm sm:text-xs'>{t('email_subtext')}</span>
             <div className='flex items-center gap-2 mt-8 sm:mt-4'>
               <EnvelopeIcon className='w-5 h-5 text-blue-600' />
-              <Link className='font-semibold text-blue-600' href={`mailto:${contactinfo.data[0].email}`} title={t('email_subtext')}>{contactinfo.data[0].email}</Link>
+              <Link className='font-semibold text-blue-600' href={`mailto:${contactinfo.data[1].email}`} title={t('email_subtext')}>{contactinfo.data[1].email}</Link>
             </div>
           </div>
         </div>
