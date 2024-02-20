@@ -2,7 +2,6 @@
 
 import axios from "axios";
 import jwt from "jsonwebtoken";
-import { cache } from "react";
 
 const API_URL = "https://contentapi-dev.biletinial.com/api/";
 
@@ -19,9 +18,9 @@ const authparams = {
 
 const WebServices = {
 
-  get: cache(async (endpoint, params) => {
+  get: async (endpoint, params) => {
 
-    // console.log("GET", token)
+    console.log("GET", token)
     try {
       const response = await axios.get(`${API_URL + endpoint}`, {
         headers: {
@@ -39,7 +38,7 @@ const WebServices = {
         if (newToken.data.status_code === 200) {
           process.env.API_TOKEN = newToken.data.token.access_token
           token = newToken.data.token.access_token
-          // console.log("TOKEN", token)
+          console.log("TOKEN", token)
           const data = await WebServices.get(endpoint, params)
           return data
         }
@@ -47,7 +46,7 @@ const WebServices = {
         return { status_code: 500 }
       }
     }
-  }),
+  },
 
 
 
