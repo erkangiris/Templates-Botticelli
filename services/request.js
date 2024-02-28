@@ -37,7 +37,6 @@ const WebServices = {
       if (error.response.status === 401) {
         const newToken = await WebServices.getToken()
         if (newToken.data.status_code === 200) {
-          process.env.API_TOKEN = newToken.data.token.access_token
           token = newToken.data.token.access_token
           console.log("TOKEN", token)
           const data = await WebServices.get(endpoint, params)
@@ -58,7 +57,7 @@ const WebServices = {
         params,
         {
           headers: {
-            authorization: `Bearer ${process.env.API_TOKEN}`,
+            authorization: `Bearer ${token}`,
             XApiKey: `TPJDtRG0cP`,
             "Content-Type": "application/json",
           },
