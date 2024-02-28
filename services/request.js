@@ -3,16 +3,17 @@
 import axios from "axios";
 import jwt from "jsonwebtoken";
 
-const API_URL = "https://contentapi-dev.biletinial.com/api/";
 
-// cinemapinkapi@biletinial.com
-// 4574747
+const apikey = "600a9a61fbcc35fc7e748bced76609844cbd76cb359b3f8d3b03fba2dcff677f7fcc6722519b53c66568df569388024d6f5628429452c3e27bf84d23a144320c9e17bfcba12f3e5523268c3fb066f4427f78ec5aa707cb5ef328167c97c192048b850089cea8ae8eb2483ec5cd06e43662de5b5f78fadf3d4763d7bea4f5ac95"
+const apiurl = "https://contentapi-dev.biletinial.com/api/"
+const apiuser = "cinemapinkapi@biletinial.com"
+const apipass = "4574747"
+const apicinm = "9"
 
-let token = process.env.API_TOKEN
-const apiurl = process.env.API_URL
+let token = apikey
 const authparams = {
-  username: process.env.API_USERNAME,
-  password: process.env.API_PASSWORD
+  username: apiuser,
+  password: apipass
 }
 
 
@@ -21,9 +22,8 @@ const WebServices = {
 
   get: async (endpoint, params) => {
 
-    console.log("GET", token)
     try {
-      const response = await axios.get(`${API_URL + endpoint}`, {
+      const response = await axios.get(`${apiurl + endpoint}`, {
         headers: {
           authorization: `Bearer ${token}`,
           XApiKey: `TPJDtRG0cP`
@@ -54,7 +54,7 @@ const WebServices = {
   post: async (endpoint, params) => {
     try {
       const response = await axios.post(
-        `${API_URL + endpoint}`, params,
+        `${apiurl + endpoint}`, params,
         params,
         {
           headers: {
@@ -73,7 +73,7 @@ const WebServices = {
 
   getToken: async () => {
 
-    const auth = await axios.post(`${API_URL + 'Auth/Token'}`, authparams,
+    const auth = await axios.post(`${apiurl + 'Auth/Token'}`, authparams,
       {
         headers: {
           XApiKey: `TPJDtRG0cP`
