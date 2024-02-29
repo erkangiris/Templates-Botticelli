@@ -4,7 +4,7 @@ import axios from "axios";
 import jwt from "jsonwebtoken";
 
 
-const apikey = "eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTUxMiIsInR5cCI6IkpXVCJ9.eyJJZCI6IjgwOTQ4MyIsIlVzZXJuYW1lIjoiY2luZW1hcGlua2FwaUBiaWxldGluaWFsLmNvbSIsIkNpbmVtYUlkIjoiOSIsIlNpdGVJZCI6IjAiLCJuYmYiOjE3MDkxOTE0MjgsImV4cCI6MTcwOTI3NzgyOCwiaXNzIjoiaHR0cDovL2NvbnRlbnRhcGktZGV2LmJpbGV0aW5pYWwuY29tL3N3YWdnZXIvaW5kZXguaHRtbCIsImF1ZCI6Imh0dHA6Ly9jb250ZW50YXBpLWRldi5iaWxldGluaWFsLmNvbS9zd2FnZ2VyL2luZGV4Lmh0bWwifQ.BQk0AUby8oXGs0cpEjO5ja6DE9yWoWHX5ePXcivtpJIrhwuCTWYq7Yw7CrCHOBAOchqvZOO-H4Kr1lJlZxW9mA"
+const apikey = "600a9a61fbcc35fc7e748bced76609844cbd76cb359b3f8d3b03fba2dcff677f7fcc6722519b53c66568df569388024d6f5628429452c3e27bf84d23a144320c9e17bfcba12f3e5523268c3fb066f4427f78ec5aa707cb5ef328167c97c192048b850089cea8ae8eb2483ec5cd06e43662de5b5f78fadf3d4763d7bea4f5ac95"
 const apiurl = "https://contentapi-dev.biletinial.com/api/"
 const apiuser = "cinemapinkapi@biletinial.com"
 const apipass = "4574747"
@@ -22,16 +22,30 @@ const WebServices = {
 
   get: async (endpoint, params) => {
 
-    const response = await axios.get(`${apiurl + endpoint}`, {
-      headers: {
-        authorization: `Bearer ${token}`,
-        XApiKey: `TPJDtRG0cP`
-      },
-      params,
-    });
+    try {
+      const response = await axios.get(`${apiurl + endpoint}`, {
+        headers: {
+          authorization: `Bearer ${token}`,
+          XApiKey: `TPJDtRG0cP`
+        },
+        params,
+      });
 
-    return response.data;
+      return response.data;
+    } catch (error) {
 
+      if (error.response.status === 401) {
+        const newToken = await WebServices.getToken()
+        if (newToken.data.status_code === 200) {
+          token = newToken.data.token.access_token
+          console.log("TOKEN", token)
+          const data = await WebServices.get(endpoint, params)
+          return data
+        }
+      } else {
+        return { status_code: 500 }
+      }
+    }
   },
 
 
