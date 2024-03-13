@@ -101,6 +101,10 @@ const WebServices = {
 
 
 
+  getPopupByFilmId: (params) => WebServices.get(`Popup/GetPopupByFilmId`, params),
+
+
+
 
   getAllContent: (params) => WebServices.get(`Cinema/GetContent?contentTypes=${params.id}`, params),
   getAllCampaigns: (params) => WebServices.get('Campaign/Get', params),
