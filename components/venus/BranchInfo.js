@@ -18,9 +18,9 @@ export default async function BranchInfo({ data }) {
         </div>
         <Score editortext={t('editor')} score={t('score')} btntext={t('buyticket')} trailertext={t('trailer')}  biletinial={'4.9'} editor={'4.5'} />
 
-        <div className='flex items-center gap-5 mt-14 sm:mt-10'>
+        {/* <div className='flex items-center gap-5 mt-14 sm:mt-10'>
           <Link href="#seances" className='btn-venus'>{t('see_seances')}</Link>
-        </div>
+        </div> */}
       </div>
     </section>
   )
