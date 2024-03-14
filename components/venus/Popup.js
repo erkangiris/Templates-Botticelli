@@ -18,7 +18,7 @@ export default function Popup({data}) {
     <>
                 {/* <button onClick={()=>setIsOpen(true)} className='btn-line flex gap-3 items-center'><PlayIcon className="w-4 h-4" />{trailertext}</button> */}
             <Transition appear show={isOpen} as={Fragment}>
-                <Dialog as="div" className="relative z-10" onClose={closeModal}>
+                <Dialog as="div" className="relative z-1001" onClose={closeModal}>
                     <Transition.Child
                         as={Fragment}
                         enter="ease-out duration-300"
