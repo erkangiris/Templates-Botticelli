@@ -3,9 +3,7 @@ import Title from './Layout/Title'
 import Poster from './Poster'
 
 export default function PosterList({title, subtitle, data, url, urltext, category,type}) {
-
-
-
+    
     return (
         <section className='w-1270 mx-auto sm:w-full sm:px-5'>
             <Title title={title} subtitle={subtitle} url={url} urltext={urltext} />

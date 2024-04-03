@@ -22,7 +22,6 @@ export default async function page() {
   const t = await getTranslations();
   const branchData = await WebServices.getAllBranches();
   const contactinfo = await WebServices.getSettings();
-  // console.log(contactinfo)
 
   return (
     <>

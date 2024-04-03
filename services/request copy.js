@@ -38,7 +38,6 @@ const WebServices = {
         const newToken = await WebServices.getToken()
         if (newToken.data.status_code === 200) {
           token = newToken.data.token.access_token
-          console.log("TOKEN", token)
           const data = await WebServices.get(endpoint, params)
           return data
         }

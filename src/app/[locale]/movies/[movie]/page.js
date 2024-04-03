@@ -21,7 +21,6 @@ export async function generateMetadata({ params}) {
 export default async function page({params}) {
   const filmDetail = await WebServices.getAllFilmDetail({id:`${params.movie.split('-').slice(-1)[0]}`});
   const t = await getTranslations();
-  // console.log(filmDetail.data[0].seances.length)
   return (
     <>
       <Header />

@@ -69,18 +69,18 @@ export default function Language() {
 
                                     <div className='w-full flex gap-5'>
                                         <div className='w-full pt-5 flex gap-3 my-2'>
-                                            <button onClick={() => setLang('tr')} variant='default' className={`flex flex-col items-center border border-white justify-center p-2 ${currentlang === "tr" && "border border-gray-100 shadow-lg"}`}>
+                                            {/* <button onClick={() => setLang('tr')} variant='default' className={`flex flex-col items-center border border-white justify-center p-2 ${currentlang === "tr" && "border border-gray-100 shadow-lg"}`}>
                                                 <Image src='/img/flags/turkey.svg' width={40} height={27} alt="alt" />
                                                 <span className='text-gray-600 mt-1 text-xxs'>Turkish</span>
-                                            </button>
+                                            </button> */}
                                             <button onClick={() => setLang('en')} variant='default' className={`flex flex-col items-center border border-white justify-center p-2 ${currentlang === "en" && "border border-gray-100 shadow-lg"}`}>
                                                 <Image src='/img/flags/uk.svg' width={40} height={27} alt="alt" />
                                                 <span className='text-gray-600 mt-1 text-xxs'>English</span>
                                             </button>
-                                            <button onClick={() => setLang('de')} variant='default' className={`flex flex-col items-center border border-white justify-center p-2 ${currentlang === "de" && "border border-gray-100 shadow-lg"}`}>
+                                            {/* <button onClick={() => setLang('de')} variant='default' className={`flex flex-col items-center border border-white justify-center p-2 ${currentlang === "de" && "border border-gray-100 shadow-lg"}`}>
                                                 <Image src='/img/flags/germany.svg' width={40} height={27} alt="alt" />
                                                 <span className='text-gray-600 mt-1 text-xxs'>German</span>
-                                            </button>
+                                            </button> */}
 
                                             <button onClick={() => setLang('hr')} variant='default' className={`flex flex-col items-center border border-white justify-center p-2 ${currentlang === "hr" && "border border-gray-100 shadow-lg"}`}>
                                                 <Image src='/img/flags/croatia.svg' width={40} height={27} alt="alt" />
