@@ -5,21 +5,25 @@ import { getTranslations, getLocale } from 'next-intl/server';
 import { MapPinIcon, PhoneArrowUpRightIcon } from '@heroicons/react/24/solid';
 
 
-export default async function Branch({ data }) {
+export default async function Branch({ data, langdata }) {
     const t = await getTranslations();
     const locale = await getLocale();
 
+    // console.log(langdata,"langdata")
     return (
         <Link href={`branches/${data.biletinialBranchId}`} className='rounded-lg bg-white p-3'>
             <figure className='relative'>
-                <Image src={data.imageUrl} alt={data.name} width={391} height={142} className='rounded-lg xl:max-h-[142px] object-cover xl:min-h-[142px]' />
+                {
+                    data.imageUrl &&
+                    <Image src={data.imageUrl} alt={data.name} width={391} height={142} className='rounded-lg xl:max-h-[142px] object-cover xl:min-h-[142px]' />
+                }
                 <div className='flex gap-2 absolute left-3 bottom-3 datas-center mt-3 px-2 py-1 bg-white w-fit rounded'>
                     <Image src="/img/star.svg" alt="Rating" width={16} height={17} />
                     <span className='text-sm font-semibold'>4.7</span>
                 </div>
             </figure>
             <div className='w-full flex flex-col pt-3 pl-2'>
-                <strong className='text-xl sm:text-base pl-2'>{data.name}</strong>
+                <strong className='text-xl sm:text-base pl-2'>{langdata.name ? langdata.name : data.name}</strong>
                 <address className='flex items-center gap-2 w-full mt-3 pt-3 border-t border-gray-200 opacity-60'>
                     <MapPinIcon className='w-5 h-5' />
                     <span className='text-xs not-italic'>{data.address}</span>

@@ -18,14 +18,14 @@ export async function generateMetadata({ params}) {
 export default async function page({params}) {
   const t = await getTranslations();
   const branchData = await WebServices.getAllBranchDetail({id:`${params.branch}`})
-
+  console.log(branchData.data[0].seances)
   return (
     <>
       <Header />
       <BranchInfo data={branchData.data[0]} />
       <div className='w-1270 mx-auto flex flex-col sm:w-full sm:p-5'>
         <BranchDetails data={branchData.data[0]} />
-        {/* <BranchSeances data={branchData.data[0].seances} title={t('seances')} subtitle={t('seancess')} /> */}
+        <BranchSeances data={branchData.data[0].seances} title={t('seances')} subtitle={t('seancess')} />
         <BranchGallery />
       </div>
       <Footer />

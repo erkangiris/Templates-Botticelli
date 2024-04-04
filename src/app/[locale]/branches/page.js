@@ -14,17 +14,36 @@ export async function generateMetadata() {
     }
 }
 
-export default async function page() {
+export default async function page({params}) {
     const t = await getTranslations();
     const locale = await getLocale();
     const branchData = await WebServices.getAllBranches();
+
+    let value;
+
+    switch (locale) {
+      case 'en':
+        value = 0;
+        break;
+      case 'hr':
+        value = 3;
+        break;
+      default:
+        value = 0;
+        break;
+    }
+
+
+    const langedData = await WebServices.getAllBranches({langId:value});
+
+
 
     return (
         <>
             <Header />
             <Breadcrumb title={t('cinemas')} subtitle={t('branches_subtext')}  img={'/img/delete/br1.webp'}  />
             <div className='w-1270 mx-auto sm:w-full'>
-                <BranchList locale={locale} data={branchData.data} title={t('cinemas')} subtitle={t('branches_subtext')} />
+                <BranchList langdata={langedData} lang={params.locale} locale={locale} data={branchData} title={t('cinemas')} subtitle={t('branches_subtext')} />
             </div>
             <Footer />
         </>
