@@ -36,8 +36,6 @@ export default async function page({params}) {
 
     const langedData = await WebServices.getAllBranches({langId:value});
 
-
-
     return (
         <>
             <Header />

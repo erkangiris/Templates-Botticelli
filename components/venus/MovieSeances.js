@@ -8,13 +8,15 @@ import SeanceDate from './SeanceDate';
 import 'swiper/css';
 
 export default function MovieSeances({ title, subtitle, data, movie, seancess }) {
-    const [currrentDay, setCurrentDay] = useState(data[0].seanceDate)
+    const [currrentDay, setCurrentDay] = useState(data.length >0 && data[0].seanceDate)
     const [bindex, setbindex] = useState(0)
     const currentDaySeances = data.filter(seance => seance.seanceDate === currrentDay);
     const changeDay = (param, index) => {
         setCurrentDay(param)
         setbindex(index)
     };
+
+    console.log(data)
 
     return (
         <section className='w-full flex flex-col mt-32 sm:mt-20'>
@@ -46,7 +48,7 @@ export default function MovieSeances({ title, subtitle, data, movie, seancess })
             </div>
             <div className='w-full flex flex-col gap-10 sm:gap-5'>
                 {
-                    currentDaySeances[0].seances.map((item, index) => (
+                    currentDaySeances.length > 0 && currentDaySeances[0].seances.map((item, index) => (
                         <div key={index} className='w-full p-10 rounded-xl  bg-white sm:p-5'>
                             <div className='w-full flex flex-col'>
                                 <h3 className='font-bold text-3xl sm:text-lg sm:leading-tight sm:mb-1'>{item.branchName}</h3>

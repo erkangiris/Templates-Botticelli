@@ -90,6 +90,7 @@ const WebServices = {
   getContentbyId: (params) => WebServices.get(`Content/GetById?Id=${params.id}`, params),
   getAllBranches: (params) => WebServices.get("Branch/Get", params),
   getAllBranchDetail: (params) => WebServices.get(`Cinema/GetBranchDetail?Id=${params.id}`, params),
+  getGetByBranchId: (params) => WebServices.get(`BranchLang/GetByBranchId?Id=${params.id}`, params),
   postMail: (params) => WebServices.post(`Cinema/CreateSubscribe`, params),
   getAllNews: (params) => WebServices.get(`Cinema/GetNewsList`, params),
   getNewsById: (params) => WebServices.get(`News/GetNewsById`, params),
@@ -106,7 +107,7 @@ const WebServices = {
 
   getAllContent: (params) => WebServices.get(`Cinema/GetContent?contentTypes=${params.id}`, params),
   getAllCampaigns: (params) => WebServices.get('Campaign/Get', params),
-  getAllVision: (params) => WebServices.get(`Cinema/Visions?CinemaId=9&langId=1&OrganizerType=1`, params),
+  getAllVision: (params) => WebServices.get(`Cinema/Visions?CinemaId=1018&langId=1&OrganizerType=1`, params),
   getAllSubscribe: (params) => WebServices.get("Subscribe/Get", params),
   getAllHakkimizda: (params) => WebServices.get("Content/GetById?Id=3", params),
   getAllHighligts: (params) => WebServices.get(`Cinema/GetHighlights`, params),

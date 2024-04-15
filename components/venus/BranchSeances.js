@@ -8,21 +8,23 @@ import SeanceDate from './SeanceDate';
 import 'swiper/css';
 
 export default function BranchSeances({ title, subtitle, data }) {
-    // console.log(data, "seances")
+    console.log(data, "seances")
 
     
 
 
-    const [currrentDay, setCurrentDay] = useState(data[0].seances)
+    const [currrentDay, setCurrentDay] = useState(data[0] && data[0].seances)
     const [bindex, setbindex] = useState(0)
-    // const currentDaySeances = data.filter(seance => seance.seanceDate === currrentDay);
+    const currentDaySeances = data.filter(seance => seance.seanceDate === currrentDay);
     const changeDay = (param, index) => {
+        console.log(param,"pram")
         setCurrentDay(param)
         setbindex(index)
     };
 
 
     console.log(currrentDay[0],"currrentDay")
+    // console.log(data,"data")
 
     return (
 
@@ -55,7 +57,7 @@ export default function BranchSeances({ title, subtitle, data }) {
             </div>
             <div className='w-full flex flex-col gap-10 sm:gap-5 bg-white rounded-lg'>
                 {
-                    currrentDay[0].saloonDetails.map((item, index) => (
+                    currrentDay && currrentDay[0].saloonDetails.map((item, index) => (
                         // console.log(item)
                         <div key={index} className='w-full p-10 rounded-xl  sm:p-5'>
                             <div className='w-full flex flex-col'>
