@@ -6,24 +6,25 @@ import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/solid';
 import Link from 'next/link';
 import SeanceDate from './SeanceDate';
 import 'swiper/css';
+import Image from 'next/image';
 
 export default function BranchSeances({ title, subtitle, data }) {
-    console.log(data, "seances")
+    // console.log(data, "seances")
 
-    
+
 
 
     const [currrentDay, setCurrentDay] = useState(data[0] && data[0].seances)
     const [bindex, setbindex] = useState(0)
     const currentDaySeances = data.filter(seance => seance.seanceDate === currrentDay);
     const changeDay = (param, index) => {
-        console.log(param,"pram")
+        // console.log(param, "pram")
         setCurrentDay(param)
         setbindex(index)
     };
 
 
-    console.log(currrentDay[0],"currrentDay")
+    // console.log(currrentDay, "currrentDay")
     // console.log(data,"data")
 
     return (
@@ -57,36 +58,27 @@ export default function BranchSeances({ title, subtitle, data }) {
             </div>
             <div className='w-full flex flex-col gap-10 sm:gap-5 bg-white rounded-lg'>
                 {
-                    currrentDay && currrentDay[0].saloonDetails.map((item, index) => (
-                        // console.log(item)
-                        <div key={index} className='w-full p-10 rounded-xl  sm:p-5'>
-                            <div className='w-full flex flex-col'>
-                                <h3 className='font-bold text-3xl sm:text-xl'>{item.saloonName}</h3>
-                                <span className='text-xs opacity-60 mb-10'>{item.filmVersion}</span>
-                                <div className='w-full flex flex-col'>
-                                    {
-                                        item.seanceDetails.map((subitem, index) => {
-                                            return (
-                                                <div key={index} className={`w-full flex items-center  'border-b  mb-5 pb-5 border-gray-200' sm:flex-col sm:items-start`}>
-                                                    <div className='flex flex-col min-w-60 sm:mb-3'>
-                                                        <strong className='text-lg'>{subitem.filmName}</strong>
-                                                        {/* <span className='text-sm opacity-70 sm:text-xs'>{subitem.filmVersion}</span> */}
-                                                    </div>
-                                                    <Link href={subitem.url} key={index} title={`${item.branchName}`} className='seance'>{subitem.seanceHour}</Link>
-
-                                                    {/* <div className='flex gap-3 sm:flex-wrap sm:gap-2'>
-                                                        {
-                                                            subitem.seanceDetails.map((subseance, index) => (
-                                                                <Link href={subseance.url} key={index} title={`${item.branchName} ${subseance.seanceHour} ${seancess}`} className='seance'>{subseance.seanceHour}</Link>
-
-                                                            ))
-                                                        }
-                                                    </div> */}
-                                                </div>
-                                            )
-                                        })
-                                    }
-                                </div>
+                    currrentDay && currrentDay.map((item, index) => (
+                        <div key={index} className='w-full flex gap-10 p-8'>
+                            <figure>
+                                <Image src={item.filmImage} width={120} height={160} alt={item.name} className='rounded-lg' />
+                            </figure>
+                            <div className='w-full flex flex-col gap-10'>
+                                {
+                                    item.saloonDetails && item.saloonDetails.map((salon) => (
+                                        <div key={salon.saloonName} className='w-full flex flex-col'>
+                                            <strong className='text-2xl font-bold'>{salon.saloonName}</strong>
+                                            <span className='text-sm opacity-60'>{salon.filmVersion}</span>
+                                            <div className='w-full flex flex-wrap gap-2 mt-2'>
+                                                {
+                                                    salon.seanceDetails && salon.seanceDetails.map((seans) => (
+                                                        <Link key={seans.seanceHour} href={seans.url} target="_blank" rel="noopener" className='text-blue-600 border border-blue-600 text-sm font-semibold px-3 py-1 rounded hover:bg-blue-50'>{seans.seanceHour}</Link>
+                                                    ))
+                                                }
+                                            </div>
+                                        </div>
+                                    ))
+                                }
                             </div>
                         </div>
                     ))

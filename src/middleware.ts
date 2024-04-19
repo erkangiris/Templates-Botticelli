@@ -3,7 +3,7 @@
 import createMiddleware from "next-intl/middleware";
 
 export default createMiddleware({
-  locales: ["en", "tr", "hr", "de"],
+  locales: ["en", "hr"],
   localeDetection: true,
   defaultLocale: "en",
   // localePrefix:'never',
@@ -91,5 +91,5 @@ export default createMiddleware({
 });
 
 export const config = {
-  matcher: ["/", "/(en|tr|hr|de)/:path*"],
+  matcher: ["/", "/(en|hr)/:path*"],
 };
