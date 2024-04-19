@@ -14,7 +14,7 @@ export default function BranchSeances({ title, subtitle, data }) {
 
 
 
-    const [currrentDay, setCurrentDay] = useState(data[0] && data[0].seances)
+    const [currrentDay, setCurrentDay] = useState(data.length >0 && data[0].seanceDate)
     const [bindex, setbindex] = useState(0)
     const currentDaySeances = data.filter(seance => seance.seanceDate === currrentDay);
     const changeDay = (param, index) => {
@@ -24,12 +24,12 @@ export default function BranchSeances({ title, subtitle, data }) {
     };
 
 
-    // console.log(currrentDay, "currrentDay")
-    // console.log(data,"data")
+    console.log(currrentDay, "currrentDay")
+    console.log(currentDaySeances,"currentDaySeances")
 
     return (
 
-        <section className='w-full flex flex-col mt-32 sm:mt-20'>
+        <section className='w-full flex flex-col mb-32 sm:mb-20'>
             <Title title={title} subtitle={subtitle} />
             <div className='w-full flex rounded-lg mt-5 mb-10 px-10 relative sm:mb-5 sm:mt-0 bg-white '>
                 <Swiper
@@ -58,7 +58,7 @@ export default function BranchSeances({ title, subtitle, data }) {
             </div>
             <div className='w-full flex flex-col gap-10 sm:gap-5 bg-white rounded-lg'>
                 {
-                    currrentDay && currrentDay.map((item, index) => (
+                    currentDaySeances && currentDaySeances[0].seances.map((item, index) => (
                         <div key={index} className='w-full flex gap-10 p-8'>
                             <figure>
                                 <Image src={item.filmImage} width={120} height={160} alt={item.name} className='rounded-lg' />

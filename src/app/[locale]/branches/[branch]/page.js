@@ -44,8 +44,8 @@ export default async function page({params}) {
       <Header />
       <BranchInfo data={branchData.data[0]} />
       <div className='w-1270 mx-auto flex flex-col sm:w-full sm:p-5'>
-        <BranchDetails data={branchData.data[0]} />
         <BranchSeances data={branchData.data[0].seances} title={t('seances')} subtitle={t('seances_subtitle')} />
+        <BranchDetails data={branchData.data[0]} />
         <BranchGallery />
       </div>
       <Footer />
