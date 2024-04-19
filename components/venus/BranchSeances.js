@@ -14,7 +14,7 @@ export default function BranchSeances({ title, subtitle, data }) {
 
 
 
-    const [currrentDay, setCurrentDay] = useState(data.length >0 && data[0].seanceDate)
+    const [currrentDay, setCurrentDay] = useState(data.length > 0 && data[0].seanceDate)
     const [bindex, setbindex] = useState(0)
     const currentDaySeances = data.filter(seance => seance.seanceDate === currrentDay);
     const changeDay = (param, index) => {
@@ -25,40 +25,44 @@ export default function BranchSeances({ title, subtitle, data }) {
 
 
     console.log(currrentDay, "currrentDay")
-    console.log(currentDaySeances,"currentDaySeances")
+    console.log(currentDaySeances, "currentDaySeances")
 
     return (
 
         <section className='w-full flex flex-col mb-32 sm:mb-20'>
             <Title title={title} subtitle={subtitle} />
-            <div className='w-full flex rounded-lg mt-5 mb-10 px-10 relative sm:mb-5 sm:mt-0 bg-white '>
-                <Swiper
-                    spaceBetween={0}
-                    slidesPerView={'auto'}
-                    freeMode
-                    className='w-full'
-                >
-                    {
-                        data.map((item, index) => {
-                            return (
-                                <SwiperSlide onClick={() => changeDay(item.seanceDate, index)} key={index} className={`sm:min-w-48 max-w-72 relative`}>
-                                    <div className='flex flex-col items-center justify-center py-6 border-r border-gray-100 cursor-pointer relative sm:py-2'>
-                                        {
-                                            index === bindex && <div className={`w-full h-1 bg-venus-brown absolute left-0 bottom-0 `} />
-                                        }
-                                        <SeanceDate time={item.seanceDate} />
-                                    </div>
-                                </SwiperSlide>
-                            )
-                        })
-                    }
-                </Swiper>
-                <button className='absolute h-full w-10 flex items-center justify-center right-0 top-0'><ChevronRightIcon className='w-5 h-5' /></button>
-                <button className='absolute h-full w-10 flex items-center justify-center left-0 top-0 border-r border-gray-100'><ChevronLeftIcon className='w-5 h-5' /></button>
-            </div>
+
+            {
+                currentDaySeances.length > 0 &&
+                <div className='w-full flex rounded-lg mt-5 mb-10 px-10 relative sm:mb-5 sm:mt-0 bg-white '>
+                    <Swiper
+                        spaceBetween={0}
+                        slidesPerView={'auto'}
+                        freeMode
+                        className='w-full'
+                    >
+                        {
+                            data.map((item, index) => {
+                                return (
+                                    <SwiperSlide onClick={() => changeDay(item.seanceDate, index)} key={index} className={`sm:min-w-48 max-w-72 relative`}>
+                                        <div className='flex flex-col items-center justify-center py-6 border-r border-gray-100 cursor-pointer relative sm:py-2'>
+                                            {
+                                                index === bindex && <div className={`w-full h-1 bg-venus-brown absolute left-0 bottom-0 `} />
+                                            }
+                                            <SeanceDate time={item.seanceDate} />
+                                        </div>
+                                    </SwiperSlide>
+                                )
+                            })
+                        }
+                    </Swiper>
+                    <button className='absolute h-full w-10 flex items-center justify-center right-0 top-0'><ChevronRightIcon className='w-5 h-5' /></button>
+                    <button className='absolute h-full w-10 flex items-center justify-center left-0 top-0 border-r border-gray-100'><ChevronLeftIcon className='w-5 h-5' /></button>
+                </div>
+            }
             <div className='w-full flex flex-col gap-10 sm:gap-5 bg-white rounded-lg'>
                 {
-                    currentDaySeances && currentDaySeances[0].seances.map((item, index) => (
+                    currentDaySeances.length > 0 ? currentDaySeances[0].seances.map((item, index) => (
                         <div key={index} className='w-full flex gap-10 p-8'>
                             <figure>
                                 <Image src={item.filmImage} width={120} height={160} alt={item.name} className='rounded-lg' />
@@ -82,6 +86,8 @@ export default function BranchSeances({ title, subtitle, data }) {
                             </div>
                         </div>
                     ))
+                        :
+                        <div className='p-10 text-center font-semibold text-2xl'>There is no activity in this branch yet.</div>
                 }
             </div>
         </section>

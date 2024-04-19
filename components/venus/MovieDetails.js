@@ -7,7 +7,6 @@ import formatDate from '@/services/formatDate';
 export default async function MovieDetails({ data }) {
     const t = await getTranslations();
     const vdate = await formatDate(data.visionDate)
-
     return (
         <section className='w-full flex flex-col'>
             <Title title={`${data.filmName} ${t('movie_plot')}`} subtitle={`${data.filmName} ${t('movie_plot_subtext')}`} />
@@ -32,23 +31,27 @@ export default async function MovieDetails({ data }) {
 
                 </div>
             </div>
-            <div className='w-full mt-32 flex flex-col sm:mt-20'>
-                <Title title={`${data.filmName} ${t('movie_cast')}`} subtitle={`${data.filmName} ${t('movie_cast_subtext')}`} />
-                <div className='flex gap-5 w-full sm:overflow-x-auto'>
-                    {
-                        data.actors.map((item) => {
-                            return (
-                                <div key={item.id} className='flex flex-col justify-center items-center gap-2 text-center sm:min-w-20'>
-                                    <figure>
-                                        <Image src={item.imageUrlValue} alt={item.name} width={64} height={64} className='rounded-full border border-gray-200 object-contain min-w-16 min-h-16 max-h-16 max-w-16' />
-                                    </figure>
-                                    <span className='text-xxs font-medium'>{item.name}</span>
-                                </div>
-                            )
-                        })
-                    }
+            {
+                data.actors.length > 0 &&
+                <div className='w-full mt-32 flex flex-col sm:mt-20'>
+                    <Title title={`${data.filmName} ${t('movie_cast')}`} subtitle={`${data.filmName} ${t('movie_cast_subtext')}`} />
+                    <div className='flex gap-5 w-full sm:overflow-x-auto'>
+                        {
+                            data.actors.map((item) => {
+                                return (
+                                    <div key={item.id} className='flex flex-col justify-center items-center gap-2 text-center sm:min-w-20'>
+                                        <figure>
+                                            <Image src={item.imageUrlValue} alt={item.name} width={64} height={64} className='rounded-full border border-gray-200 object-contain min-w-16 min-h-16 max-h-16 max-w-16' />
+                                        </figure>
+                                        <span className='text-xxs font-medium'>{item.name}</span>
+                                    </div>
+                                )
+                            })
+                        }
+                    </div>
                 </div>
-            </div>
+            }
+
             <div id="seances" />
         </section>
     )
