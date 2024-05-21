@@ -24,7 +24,7 @@ export default async function Footer() {
     { name: 'Instagram', url: 'https://www.instagram.com/kinomediteran', icon: '/img/socials/005-instagram.svg' },
     { name: 'Youtube', url: 'https://www.youtube.com/channel/UCWwKEeGLwIipPsCr7dFrP8A', icon: '/img/socials/004-youtube.svg' },
     { name: 'Facebook', url: 'https://www.facebook.com/kinomediteran', icon: '/img/socials/001-facebook.svg' },
-]
+  ]
 
   const newsletter_text = {
     newsletter_title: t('newsletter'),
@@ -41,16 +41,17 @@ export default async function Footer() {
     <footer className='w-full mt-32 border-t bg-botticelli-blue text-white pt-20 sm:mt-12 sm:p-5'>
       <div className='mx-auto w-1270 flex flex-col sm:w-full'>
         <Newsletter text={newsletter_text} />
-        <div className='w-full flex gap-8 mt-20 border-t border-b border-white border-opacity-10 py-10'>
-          <Link href="" title="" target='_blank'><Image src='/img/kinos/lg1.png' width={260} height={150} alt="" /></Link>
-          <Link href="" title="" target='_blank'><Image src='/img/kinos/lg2.png' width={260} height={150} alt="" /></Link>
-          <Link href="" title="" target='_blank'><Image src='/img/kinos/lg3.png' width={260} height={150} alt="" /></Link>
-          <Link href="" title="" target='_blank'><Image src='/img/kinos/lg4.png' width={260} height={150} alt="" /></Link>
-          <Link href="" title="" target='_blank'><Image src='/img/kinos/lg5.png' width={260} height={150} alt="" /></Link>
-          <Link href="" title="" target='_blank'><Image src='/img/kinos/lg6.png' width={260} height={150} alt="" /></Link>
-          <Link href="" title="" target='_blank'><Image src='/img/kinos/lg7.png' width={260} height={150} alt="" /></Link>
-          <Link href="" title="" target='_blank'><Image src='/img/kinos/lg8.png' width={260} height={150} alt="" /></Link>
-
+        <div className='w-full overflow-x-auto'>
+          <div className='w-full flex gap-8 mt-20 border-t border-b border-white border-opacity-10 py-10'>
+            <Link href="#" title="" target='_blank'><Image src='/img/kinos/lg1.png' width={260} height={150} alt="" className='min-w-20' /></Link>
+            <Link href="#" title="" target='_blank'><Image src='/img/kinos/lg2.png' width={260} height={150} alt="" className='min-w-20' /></Link>
+            <Link href="#" title="" target='_blank'><Image src='/img/kinos/lg3.png' width={260} height={150} alt="" className='min-w-20' /></Link>
+            <Link href="#" title="" target='_blank'><Image src='/img/kinos/lg4.png' width={260} height={150} alt="" className='min-w-20' /></Link>
+            <Link href="#" title="" target='_blank'><Image src='/img/kinos/lg5.png' width={260} height={150} alt="" className='min-w-20' /></Link>
+            <Link href="#" title="" target='_blank'><Image src='/img/kinos/lg6.png' width={260} height={150} alt="" className='min-w-20' /></Link>
+            <Link href="#" title="" target='_blank'><Image src='/img/kinos/lg7.png' width={260} height={150} alt="" className='min-w-20' /></Link>
+            <Link href="#" title="" target='_blank'><Image src='/img/kinos/lg8.png' width={260} height={150} alt="" className='min-w-20' /></Link>
+          </div>
         </div>
         <div className="w-full overflow-hidden px-6 py-20 lg:px-8 sm:p-5">
           {/* <nav className='flex gap-3 items-center justify-center w-full border-t border-b pb-10 border-white border-opacity-10 pt-10 sm:border-none sm:hidden'>

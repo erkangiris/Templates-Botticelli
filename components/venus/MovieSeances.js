@@ -58,7 +58,7 @@ export default function MovieSeances({ title, subtitle, data, movie, seancess })
                                         item.saloonDetails.map((subitem, index) => {
                                             const isLastItem = index === item.saloonDetails.length - 1;
                                             return (
-                                                <div key={index} className={`w-full flex items-center ${isLastItem ? '' : 'border-b  mb-5 pb-5 border-gray-200'} sm:flex-col sm:items-start`}>
+                                                <div key={index} className={`w-full flex items-center gap-5 ${isLastItem ? '' : 'border-b  mb-5 pb-5 border-gray-200'} sm:flex-col sm:items-start`}>
                                                     <div className='flex flex-col min-w-60 sm:mb-3'>
                                                         <strong className='text-lg sm:text-base'>{subitem.saloonName}</strong>
                                                         <span className='text-sm opacity-70 sm:text-xs'>{subitem.filmVersion}</span>
