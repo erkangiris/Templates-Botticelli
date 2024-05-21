@@ -4,7 +4,7 @@ import axios from "axios";
 import jwt from "jsonwebtoken";
 
 
-const apikey = "600a9a61fbcc35fc7e748bced76609844cbd76cb359b3f8d3b03fba2dcff677f7fcc6722519b53c66568df569388024d6f5628429452c3e27bf84d23a144320c9e17bfcba12f3e5523268c3fb066f4427f78ec5aa707cb5ef328167c97c192048b850089cea8ae8eb2483ec5cd06e43662de5b5f78fadf3d4763d7bea4f5ac95"
+const apikey = ""
 const apiurl = process.env.API_URL
 const apiuser = process.env.API_USERNAME
 const apipass = process.env.API_PASSWORD
